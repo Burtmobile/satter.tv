@@ -314,6 +314,147 @@
       transform: scale(2.2);
       transform-origin: 58% 22%;
     }
+
+    /* ── Smooth theme transition ── */
+    body, header, footer, .badge, .tab-btn, .lang, .flag,
+    .brief-cv h2, .brief-cv h3, .brief-cv ul li, .brief-cv ul li span,
+    section.cv h2, .content h3, .content .org, .content p, .content ul,
+    .intro p, .year, .timeline::before, .entry::before {
+      transition: background-color 0.25s ease, color 0.25s ease, border-color 0.25s ease, box-shadow 0.25s ease;
+    }
+
+    /* ── Theme toggle button ── */
+    header { position: relative; }
+    .theme-toggle {
+      position: absolute;
+      top: 1.2rem;
+      right: 1.2rem;
+      width: 40px;
+      height: 40px;
+      border-radius: 50%;
+      background: rgba(255,255,255,0.08);
+      border: 1px solid rgba(255,255,255,0.18);
+      color: #fff;
+      cursor: pointer;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      transition: background 0.2s, transform 0.15s;
+    }
+    .theme-toggle:hover { background: rgba(255,255,255,0.18); }
+    .theme-toggle:active { transform: scale(0.92); }
+    .theme-toggle svg { width: 20px; height: 20px; fill: currentColor; }
+    .theme-icon-sun { display: none; }
+    body.dark .theme-icon-moon { display: none; }
+    body.dark .theme-icon-sun { display: block; }
+
+    /* ── Languages ── */
+    .languages-block {
+      max-width: 780px;
+      margin: 1.5rem auto 0;
+      padding: 0 2rem;
+    }
+    .languages-block h3 {
+      font-size: 0.92rem;
+      font-weight: 600;
+      color: #111;
+      margin-bottom: 0.6rem;
+      text-transform: uppercase;
+      letter-spacing: 0.05em;
+    }
+    .languages {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 0.6rem;
+    }
+    .languages.center { justify-content: center; }
+    .lang {
+      display: inline-flex;
+      align-items: center;
+      gap: 0.55rem;
+      background: #fff;
+      border: 1px solid #e3e3e0;
+      border-radius: 24px;
+      padding: 0.35rem 1rem 0.35rem 0.4rem;
+      font-size: 0.88rem;
+      color: #1a1a1a;
+      box-shadow: 0 1px 2px rgba(0,0,0,0.04);
+    }
+    .lang:hover {
+      transform: translateY(-1px);
+      box-shadow: 0 4px 12px rgba(0,0,0,0.08);
+    }
+    .flag {
+      width: 26px;
+      height: 18px;
+      border-radius: 3px;
+      flex-shrink: 0;
+      box-shadow: 0 0 0 1px rgba(0,0,0,0.12);
+      overflow: hidden;
+      display: block;
+    }
+    .brief-cv .languages-block {
+      max-width: none;
+      padding: 0;
+      margin-top: 0.5rem;
+    }
+    .brief-cv .languages-block h3 {
+      font-size: 0.92rem;
+      margin: 1.2rem 0 0.5rem;
+    }
+
+    /* ── Dark mode ── */
+    body.dark { background: #121212; color: #e8e8e8; }
+    body.dark header { background: #0a0a0a; }
+    body.dark header p.subtitle { color: #999; }
+    body.dark .intro p { color: #b8b8b8; }
+    body.dark .badge {
+      background: #2a2a2a;
+      color: #f0f0f0;
+      border: 1px solid #383838;
+    }
+    body.dark section.cv h2,
+    body.dark .brief-cv h2 {
+      color: #888;
+      border-bottom-color: #2a2a2a;
+    }
+    body.dark .timeline::before { background: #2a2a2a; }
+    body.dark .entry::before {
+      border-color: #121212;
+      box-shadow: 0 0 0 1px #2a2a2a;
+    }
+    body.dark .year { color: #888; }
+    body.dark .content h3 { color: #f0f0f0; }
+    body.dark .content .org { color: #888; }
+    body.dark .content p,
+    body.dark .content ul { color: #b8b8b8; }
+    body.dark .opdrachtgevers { color: #888; }
+    body.dark footer { background: #0a0a0a; color: #777; }
+    body.dark .tab-btn { border-color: #333; color: #999; }
+    body.dark .tab-btn:hover { color: #fff; border-color: #666; }
+    body.dark .tab-btn.active {
+      background: #f0a500;
+      color: #111;
+      border-color: #f0a500;
+    }
+    body.dark .brief-cv .summary { color: #b8b8b8; }
+    body.dark .brief-cv h3 { color: #f0f0f0; }
+    body.dark .brief-cv ul li {
+      color: #b8b8b8;
+      border-bottom-color: #1f1f1f;
+    }
+    body.dark .brief-cv ul li span { color: #888; }
+    body.dark .languages-block h3 { color: #f0f0f0; }
+    body.dark .lang {
+      background: #1e1e1e;
+      border-color: #2a2a2a;
+      color: #e8e8e8;
+      box-shadow: 0 1px 2px rgba(0,0,0,0.25);
+    }
+    body.dark .lang:hover {
+      box-shadow: 0 4px 12px rgba(0,0,0,0.45);
+    }
+    body.dark .flag { box-shadow: 0 0 0 1px rgba(255,255,255,0.18); }
   </style>
 </head>
 <body>
@@ -326,6 +467,10 @@
     <a href="tel:0640659999" class="phone-highlight">&#128222; 064 065 9999</a>
     <a href="mailto:bert@satter.tv">&#9993; bert@satter.tv</a>
   </div>
+  <button class="theme-toggle" onclick="toggleTheme()" aria-label="Donkere modus aan/uit" title="Modus wisselen">
+    <svg class="theme-icon-moon" viewBox="0 0 24 24"><path d="M12 3a9 9 0 1 0 9 9c0-.46-.04-.92-.1-1.36a5.389 5.389 0 0 1-4.4 2.26 5.403 5.403 0 0 1-3.14-9.8c-.44-.06-.9-.1-1.36-.1z"/></svg>
+    <svg class="theme-icon-sun" viewBox="0 0 24 24"><path d="M12 7a5 5 0 1 0 0 10 5 5 0 0 0 0-10zm0-5a1 1 0 0 1 1 1v2a1 1 0 1 1-2 0V3a1 1 0 0 1 1-1zm0 17a1 1 0 0 1 1 1v2a1 1 0 1 1-2 0v-2a1 1 0 0 1 1-1zM5.64 5.64a1 1 0 0 1 1.41 0l1.42 1.42a1 1 0 1 1-1.42 1.42L5.64 7.05a1 1 0 0 1 0-1.41zm9.9 9.9a1 1 0 0 1 1.41 0l1.42 1.42a1 1 0 1 1-1.42 1.42l-1.41-1.42a1 1 0 0 1 0-1.42zM2 12a1 1 0 0 1 1-1h2a1 1 0 1 1 0 2H3a1 1 0 0 1-1-1zm17 0a1 1 0 0 1 1-1h2a1 1 0 1 1 0 2h-2a1 1 0 0 1-1-1zM5.64 18.36a1 1 0 0 1 0-1.41l1.42-1.42a1 1 0 1 1 1.41 1.42l-1.41 1.41a1 1 0 0 1-1.42 0zm9.9-9.9a1 1 0 0 1 0-1.41l1.42-1.42a1 1 0 1 1 1.41 1.42l-1.41 1.41a1 1 0 0 1-1.42 0z"/></svg>
+  </button>
 </header>
 
 <div class="tabs">
@@ -343,6 +488,28 @@
     <span class="badge">VCA</span>
     <span class="badge">Code 95</span>
     <span class="badge">Vorkheftruck</span>
+  </div>
+</div>
+
+<div class="languages-block" style="text-align:center;">
+  <h3>Talen</h3>
+  <div class="languages center">
+    <div class="lang">
+      <svg class="flag" viewBox="0 0 30 20" preserveAspectRatio="none"><rect width="30" height="6.67" fill="#AE1C28"/><rect y="6.67" width="30" height="6.67" fill="#FFFFFF"/><rect y="13.33" width="30" height="6.67" fill="#21468B"/></svg>
+      <span>Nederlands</span>
+    </div>
+    <div class="lang">
+      <svg class="flag" viewBox="0 0 30 20" preserveAspectRatio="none"><rect width="10" height="20" fill="#0055A4"/><rect x="10" width="10" height="20" fill="#FFFFFF"/><rect x="20" width="10" height="20" fill="#EF4135"/></svg>
+      <span>Frans</span>
+    </div>
+    <div class="lang">
+      <svg class="flag" viewBox="0 0 60 40" preserveAspectRatio="none"><rect width="60" height="40" fill="#012169"/><path d="M0,0 L60,40 M60,0 L0,40" stroke="#FFFFFF" stroke-width="8"/><path d="M0,0 L60,40 M60,0 L0,40" stroke="#C8102E" stroke-width="4"/><path d="M30,0 V40 M0,20 H60" stroke="#FFFFFF" stroke-width="13"/><path d="M30,0 V40 M0,20 H60" stroke="#C8102E" stroke-width="8"/></svg>
+      <span>Engels</span>
+    </div>
+    <div class="lang">
+      <svg class="flag" viewBox="0 0 30 20" preserveAspectRatio="none"><rect width="30" height="6.67" fill="#000000"/><rect y="6.67" width="30" height="6.67" fill="#DD0000"/><rect y="13.33" width="30" height="6.67" fill="#FFCE00"/></svg>
+      <span>Duits</span>
+    </div>
   </div>
 </div>
 
@@ -500,6 +667,28 @@
     <span class="badge">Code 95</span>
     <span class="badge">Chariot élévateur</span>
   </div>
+
+  <div class="languages-block">
+    <h3>Langues</h3>
+    <div class="languages">
+      <div class="lang">
+        <svg class="flag" viewBox="0 0 30 20" preserveAspectRatio="none"><rect width="30" height="6.67" fill="#AE1C28"/><rect y="6.67" width="30" height="6.67" fill="#FFFFFF"/><rect y="13.33" width="30" height="6.67" fill="#21468B"/></svg>
+        <span>Néerlandais</span>
+      </div>
+      <div class="lang">
+        <svg class="flag" viewBox="0 0 30 20" preserveAspectRatio="none"><rect width="10" height="20" fill="#0055A4"/><rect x="10" width="10" height="20" fill="#FFFFFF"/><rect x="20" width="10" height="20" fill="#EF4135"/></svg>
+        <span>Français</span>
+      </div>
+      <div class="lang">
+        <svg class="flag" viewBox="0 0 60 40" preserveAspectRatio="none"><rect width="60" height="40" fill="#012169"/><path d="M0,0 L60,40 M60,0 L0,40" stroke="#FFFFFF" stroke-width="8"/><path d="M0,0 L60,40 M60,0 L0,40" stroke="#C8102E" stroke-width="4"/><path d="M30,0 V40 M0,20 H60" stroke="#FFFFFF" stroke-width="13"/><path d="M30,0 V40 M0,20 H60" stroke="#C8102E" stroke-width="8"/></svg>
+        <span>Anglais</span>
+      </div>
+      <div class="lang">
+        <svg class="flag" viewBox="0 0 30 20" preserveAspectRatio="none"><rect width="30" height="6.67" fill="#000000"/><rect y="6.67" width="30" height="6.67" fill="#DD0000"/><rect y="13.33" width="30" height="6.67" fill="#FFCE00"/></svg>
+        <span>Allemand</span>
+      </div>
+    </div>
+  </div>
 </div>
 </div>
 
@@ -539,6 +728,28 @@
     <span class="badge">VCA</span>
     <span class="badge">Code 95</span>
     <span class="badge">Forklift</span>
+  </div>
+
+  <div class="languages-block">
+    <h3>Languages</h3>
+    <div class="languages">
+      <div class="lang">
+        <svg class="flag" viewBox="0 0 30 20" preserveAspectRatio="none"><rect width="30" height="6.67" fill="#AE1C28"/><rect y="6.67" width="30" height="6.67" fill="#FFFFFF"/><rect y="13.33" width="30" height="6.67" fill="#21468B"/></svg>
+        <span>Dutch</span>
+      </div>
+      <div class="lang">
+        <svg class="flag" viewBox="0 0 30 20" preserveAspectRatio="none"><rect width="10" height="20" fill="#0055A4"/><rect x="10" width="10" height="20" fill="#FFFFFF"/><rect x="20" width="10" height="20" fill="#EF4135"/></svg>
+        <span>French</span>
+      </div>
+      <div class="lang">
+        <svg class="flag" viewBox="0 0 60 40" preserveAspectRatio="none"><rect width="60" height="40" fill="#012169"/><path d="M0,0 L60,40 M60,0 L0,40" stroke="#FFFFFF" stroke-width="8"/><path d="M0,0 L60,40 M60,0 L0,40" stroke="#C8102E" stroke-width="4"/><path d="M30,0 V40 M0,20 H60" stroke="#FFFFFF" stroke-width="13"/><path d="M30,0 V40 M0,20 H60" stroke="#C8102E" stroke-width="8"/></svg>
+        <span>English</span>
+      </div>
+      <div class="lang">
+        <svg class="flag" viewBox="0 0 30 20" preserveAspectRatio="none"><rect width="30" height="6.67" fill="#000000"/><rect y="6.67" width="30" height="6.67" fill="#DD0000"/><rect y="13.33" width="30" height="6.67" fill="#FFCE00"/></svg>
+        <span>German</span>
+      </div>
+    </div>
   </div>
 </div>
 </div>
@@ -580,6 +791,28 @@
     <span class="badge">Code 95</span>
     <span class="badge">Gabelstapler</span>
   </div>
+
+  <div class="languages-block">
+    <h3>Sprachen</h3>
+    <div class="languages">
+      <div class="lang">
+        <svg class="flag" viewBox="0 0 30 20" preserveAspectRatio="none"><rect width="30" height="6.67" fill="#AE1C28"/><rect y="6.67" width="30" height="6.67" fill="#FFFFFF"/><rect y="13.33" width="30" height="6.67" fill="#21468B"/></svg>
+        <span>Niederländisch</span>
+      </div>
+      <div class="lang">
+        <svg class="flag" viewBox="0 0 30 20" preserveAspectRatio="none"><rect width="10" height="20" fill="#0055A4"/><rect x="10" width="10" height="20" fill="#FFFFFF"/><rect x="20" width="10" height="20" fill="#EF4135"/></svg>
+        <span>Französisch</span>
+      </div>
+      <div class="lang">
+        <svg class="flag" viewBox="0 0 60 40" preserveAspectRatio="none"><rect width="60" height="40" fill="#012169"/><path d="M0,0 L60,40 M60,0 L0,40" stroke="#FFFFFF" stroke-width="8"/><path d="M0,0 L60,40 M60,0 L0,40" stroke="#C8102E" stroke-width="4"/><path d="M30,0 V40 M0,20 H60" stroke="#FFFFFF" stroke-width="13"/><path d="M30,0 V40 M0,20 H60" stroke="#C8102E" stroke-width="8"/></svg>
+        <span>Englisch</span>
+      </div>
+      <div class="lang">
+        <svg class="flag" viewBox="0 0 30 20" preserveAspectRatio="none"><rect width="30" height="6.67" fill="#000000"/><rect y="6.67" width="30" height="6.67" fill="#DD0000"/><rect y="13.33" width="30" height="6.67" fill="#FFCE00"/></svg>
+        <span>Deutsch</span>
+      </div>
+    </div>
+  </div>
 </div>
 </div>
 
@@ -594,6 +827,20 @@
     document.getElementById('tab-' + lang).classList.add('active');
     btn.classList.add('active');
   }
+
+  // ── Donkere modus ──
+  function toggleTheme() {
+    const dark = document.body.classList.toggle('dark');
+    try { localStorage.setItem('satter-theme', dark ? 'dark' : 'light'); } catch(e) {}
+  }
+  (function() {
+    let saved;
+    try { saved = localStorage.getItem('satter-theme'); } catch(e) {}
+    const prefersDark = window.matchMedia && window.matchMedia('(prefers-color-scheme: dark)').matches;
+    if (saved === 'dark' || (!saved && prefersDark)) {
+      document.body.classList.add('dark');
+    }
+  })();
 </script>
 </body>
 </html>
