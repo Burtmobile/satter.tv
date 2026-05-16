@@ -563,6 +563,166 @@
       .flag { box-shadow: 0 0 0 1px #999 !important; }
       @page { margin: 1.5cm; }
     }
+
+    /* ── Contact pills (email + LinkedIn) ── */
+    .contact-bar a:not(.phone-highlight) {
+      background: rgba(255, 255, 255, 0.08);
+      border: 1px solid rgba(255, 255, 255, 0.22);
+      padding: 0.5rem 1.1rem;
+      border-radius: 30px;
+      color: #fff;
+      font-weight: 500;
+      font-size: 0.95rem;
+      transition: background 0.2s, color 0.2s, transform 0.15s;
+    }
+    .contact-bar a:not(.phone-highlight):hover {
+      background: rgba(255, 255, 255, 0.18);
+      color: #fff;
+    }
+    .contact-bar a:active { transform: scale(0.97); }
+    .contact-bar a.linkedin {
+      background: rgba(10, 102, 194, 0.22);
+      border-color: rgba(10, 102, 194, 0.45);
+    }
+    .contact-bar a.linkedin:hover { background: rgba(10, 102, 194, 0.38); }
+    .contact-bar a svg { width: 16px; height: 16px; fill: currentColor; }
+
+    /* ── Side activity (Trauma Acteur op zijspoor) ── */
+    .side-activity {
+      max-width: 780px;
+      margin: 2rem auto 0;
+      padding: 1.4rem 1.6rem;
+      border-left: 3px solid #f0a500;
+      background: rgba(240, 165, 0, 0.05);
+      border-radius: 0 8px 8px 0;
+    }
+    .side-activity .side-tag {
+      display: inline-block;
+      font-size: 0.7rem;
+      font-weight: 700;
+      letter-spacing: 0.16em;
+      text-transform: uppercase;
+      color: #b87400;
+      background: rgba(240, 165, 0, 0.18);
+      padding: 3px 10px;
+      border-radius: 12px;
+      margin-bottom: 0.7rem;
+    }
+    .side-activity h3 {
+      font-size: 1.05rem;
+      color: #1a1a1a;
+      margin: 0 0 0.25rem;
+      font-weight: 600;
+    }
+    .side-activity .side-meta {
+      color: #888;
+      font-size: 0.82rem;
+      margin-bottom: 0.6rem;
+    }
+    .side-activity p {
+      font-size: 0.92rem;
+      color: #555;
+      line-height: 1.6;
+    }
+    body.dark .side-activity { background: rgba(240, 165, 0, 0.07); }
+    body.dark .side-activity .side-tag {
+      color: #f0c060;
+      background: rgba(240, 165, 0, 0.2);
+    }
+    body.dark .side-activity h3 { color: #f0f0f0; }
+    body.dark .side-activity p { color: #b8b8b8; }
+    .brief-cv ~ .side-activity { margin-top: 1.5rem; }
+
+    /* ── Clients strip ── */
+    .clients-strip {
+      background: rgba(0, 0, 0, 0.025);
+      padding: 2.5rem 1.5rem 3rem;
+      border-top: 1px solid rgba(0, 0, 0, 0.06);
+    }
+    .clients-strip h2 {
+      font-size: 0.78rem;
+      font-weight: 700;
+      letter-spacing: 0.15em;
+      text-transform: uppercase;
+      color: #888;
+      text-align: center;
+      margin-bottom: 1.8rem;
+    }
+    .clients-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(140px, 1fr));
+      gap: 1rem 1.25rem;
+      max-width: 900px;
+      margin: 0 auto;
+    }
+    .client-logo {
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      height: 64px;
+      padding: 0 0.8rem;
+      background: rgba(0, 0, 0, 0.03);
+      border: 1px solid rgba(0, 0, 0, 0.06);
+      border-radius: 8px;
+      color: #888;
+      font-family: Georgia, 'Times New Roman', serif;
+      font-size: 0.92rem;
+      font-weight: 600;
+      letter-spacing: 0.02em;
+      text-align: center;
+      filter: grayscale(100%);
+      opacity: 0.75;
+      transition: opacity 0.25s ease, color 0.25s ease, transform 0.2s ease;
+    }
+    .client-logo:hover {
+      opacity: 1;
+      color: #444;
+      transform: translateY(-2px);
+    }
+    .client-logo img {
+      max-height: 38px;
+      max-width: 100%;
+      filter: grayscale(100%);
+      opacity: 0.85;
+    }
+    .client-logo:hover img { opacity: 1; }
+    body.dark .clients-strip {
+      background: rgba(255, 255, 255, 0.02);
+      border-top-color: rgba(255, 255, 255, 0.05);
+    }
+    body.dark .client-logo {
+      background: rgba(255, 255, 255, 0.04);
+      border-color: rgba(255, 255, 255, 0.08);
+      color: #888;
+    }
+    body.dark .client-logo:hover { color: #ddd; }
+
+    /* Aanvullende print-regels voor nieuwe elementen */
+    @media print {
+      .clients-strip { background: white !important; border-top: 1px solid #ccc !important; padding: 1.5rem 0 !important; }
+      .clients-strip h2 { color: #444 !important; }
+      .client-logo {
+        background: white !important;
+        border-color: #ccc !important;
+        color: #555 !important;
+        opacity: 1 !important;
+        filter: grayscale(100%) !important;
+      }
+      .side-activity {
+        background: white !important;
+        border-left-color: #888 !important;
+        padding: 0.6rem 1rem !important;
+      }
+      .side-activity .side-tag { color: #555 !important; background: #eee !important; }
+      .side-activity h3, .side-activity p { color: black !important; }
+      .side-activity .side-meta { color: #555 !important; }
+      .contact-bar a:not(.phone-highlight) {
+        background: white !important;
+        border: 1px solid #999 !important;
+        color: black !important;
+        padding: 0.35rem 0.9rem !important;
+      }
+    }
   </style>
 </head>
 <body>
@@ -580,7 +740,14 @@
   </div>
   <div class="contact-bar">
     <a href="tel:0640659999" class="phone-highlight">&#128222; 064 065 9999</a>
-    <a href="mailto:bert@satter.tv">&#9993; bert@satter.tv</a>
+    <a href="mailto:bert@satter.tv">
+      <svg viewBox="0 0 24 24"><path d="M20 4H4c-1.1 0-2 .9-2 2v12c0 1.1.9 2 2 2h16c1.1 0 2-.9 2-2V6c0-1.1-.9-2-2-2zm0 4-8 5-8-5V6l8 5 8-5v2z"/></svg>
+      bert@satter.tv
+    </a>
+    <a href="https://www.linkedin.com/in/bertsatter" class="linkedin" target="_blank" rel="noopener" title="LinkedIn-profiel">
+      <svg viewBox="0 0 24 24"><path d="M19 3a2 2 0 0 1 2 2v14a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V5a2 2 0 0 1 2-2h14zM8.339 18.337V9.755H5.667v8.582h2.672zM7.003 8.575c.86 0 1.557-.696 1.557-1.557A1.557 1.557 0 1 0 7.002 8.575zm11.336 9.762v-4.703c0-2.318-.502-4.1-3.21-4.1-1.302 0-2.175.715-2.532 1.392h-.036V9.755h-2.564v8.582h2.671v-4.245c0-1.121.213-2.205 1.601-2.205 1.368 0 1.388 1.28 1.388 2.277v4.173h2.682z"/></svg>
+      LinkedIn
+    </a>
   </div>
   <button class="theme-toggle" onclick="toggleTheme()" aria-label="Donkere modus aan/uit" title="Modus wisselen">
     <svg class="theme-icon-moon" viewBox="0 0 24 24"><path d="M12 3a9 9 0 1 0 9 9c0-.46-.04-.92-.1-1.36a5.389 5.389 0 0 1-4.4 2.26 5.403 5.403 0 0 1-3.14-9.8c-.44-.06-.9-.1-1.36-.1z"/></svg>
@@ -652,15 +819,6 @@
         </ul>
         <p style="margin-top:0.5rem">Van live voetbalwedstrijden tot concerten, in binnen- en buitenland.</p>
         <p class="opdrachtgevers">KeyTown, The Crew, Eurogrip NL, Hof Broadcast, EMG België Connectivity, Bocavista, Walk in the Park, Cambition, Satter AV Prod, Wiedema Intermedia, EMG, NEP, VideoBrix, Mobicam, Ericsson, Alfacam/Videohouse</p>
-      </div>
-    </div>
-
-    <div class="entry">
-      <div class="year">2020–heden</div>
-      <div class="content">
-        <h3>Trauma Acteur</h3>
-        <div class="org">Grip5</div>
-        <p>Inzet bij profit- en non-profitorganisaties in binnen- en buitenland volgens het laatste medische protocol. Opdrachtgevers als Defensie, Politie, Brandweer en Veiligheidsregio's. Adhoc aanpassing in scenario's, advies en het grimeren van realistische verwondingen.</p>
       </div>
     </div>
 
@@ -747,6 +905,13 @@
 
   </div>
 </section>
+
+<section class="side-activity">
+  <span class="side-tag">Naast AV</span>
+  <h3>Trauma Acteur</h3>
+  <p class="side-meta">Grip5 · 2020–heden</p>
+  <p>Inzet bij profit- en non-profitorganisaties in binnen- en buitenland volgens het laatste medische protocol. Opdrachtgevers als Defensie, Politie, Brandweer en Veiligheidsregio's. Adhoc aanpassing in scenario's, advies en het grimeren van realistische verwondingen.</p>
+</section>
 </div>
 
 <!-- FRANÇAIS -->
@@ -766,7 +931,6 @@
     <li>Producteur <span>2wayTraffic · 2007–2008</span></li>
     <li>Planificateur Post-production &amp; Consultant <span>Chello Media DMC · 2008–2009</span></li>
     <li>Chef de studio <span>Omroep MAX · 2019–2021</span></li>
-    <li>Acteur de trauma <span>Grip5 · 2020–présent</span></li>
     <li>Freelance AV <span>2005–présent</span></li>
   </ul>
 
@@ -809,6 +973,13 @@
     </div>
   </div>
 </div>
+
+<section class="side-activity">
+  <span class="side-tag">Activité parallèle</span>
+  <h3>Acteur de trauma</h3>
+  <p class="side-meta">Grip5 · 2020–présent</p>
+  <p>Missions dans le secteur public et privé selon le dernier protocole médical, pour des donneurs d'ordre comme la Défense, la Police, les Pompiers et les services de sécurité régionaux.</p>
+</section>
 </div>
 
 <!-- ENGLISH -->
@@ -828,7 +999,6 @@
     <li>Producer <span>2wayTraffic · 2007–2008</span></li>
     <li>Post-production Planner &amp; Consultant <span>Chello Media DMC · 2008–2009</span></li>
     <li>Studio Chief <span>Omroep MAX · 2019–2021</span></li>
-    <li>Trauma Actor <span>Grip5 · 2020–present</span></li>
     <li>AV Freelancer <span>2005–present</span></li>
   </ul>
 
@@ -871,6 +1041,13 @@
     </div>
   </div>
 </div>
+
+<section class="side-activity">
+  <span class="side-tag">Side activity</span>
+  <h3>Trauma actor</h3>
+  <p class="side-meta">Grip5 · 2020–present</p>
+  <p>Engaged by public and private organisations following the latest medical protocols, for clients including the Dutch Defence, Police, Fire Service and Regional Safety Authorities. Improvising scenarios on the spot and applying realistic injury make-up.</p>
+</section>
 </div>
 
 <!-- DEUTSCH -->
@@ -890,17 +1067,16 @@
     <li>Produzent <span>2wayTraffic · 2007–2008</span></li>
     <li>Postproduktionsplaner &amp; Berater <span>Chello Media DMC · 2008–2009</span></li>
     <li>Studiochef <span>Omroep MAX · 2019–2021</span></li>
-    <li>Trauma-Schauspieler <span>Grip5 · 2020–heute</span></li>
     <li>AV-Freelancer <span>2005–heute</span></li>
   </ul>
 
   <h3>Tätigkeiten &amp; Fähigkeiten</h3>
-  <ul>
-    <li>Kameraassistent / Videoassistent</li>
-    <li>Autocue-Operator</li>
-    <li>Studiochef / Chief equipment OB</li>
-    <li>LKW-Fahrer (Führerschein C)</li>
-    <li>Play-out Operator</li>
+  <ul class="skills">
+    <li><i class="ti ti-camera"></i>Kameraassistent / Videoassistent</li>
+    <li><i class="ti ti-device-tv"></i>Autocue-Operator</li>
+    <li><i class="ti ti-adjustments-horizontal"></i>Studiochef / Chief equipment OB</li>
+    <li><i class="ti ti-truck"></i>LKW-Fahrer (Führerschein C)</li>
+    <li><i class="ti ti-broadcast"></i>Play-out Operator</li>
   </ul>
 
   <h3>Zertifikate</h3>
@@ -933,7 +1109,29 @@
     </div>
   </div>
 </div>
+
+<section class="side-activity">
+  <span class="side-tag">Nebenaktivität</span>
+  <h3>Trauma-Schauspieler</h3>
+  <p class="side-meta">Grip5 · 2020–heute</p>
+  <p>Einsätze für öffentliche und private Organisationen nach den neuesten medizinischen Protokollen, u. a. für Verteidigung, Polizei, Feuerwehr und Sicherheitsregionen. Ad-hoc Szenarioanpassungen und realistisches Verletzungs-Make-up.</p>
+</section>
 </div>
+
+<section class="clients-strip">
+  <h2 data-nl="Gewerkt voor o.a."
+      data-fr="Ils m'ont fait confiance"
+      data-en="Worked with"
+      data-de="Gearbeitet für u. a.">Gewerkt voor o.a.</h2>
+  <div class="clients-grid">
+    <div class="client-logo">NOB-P&amp;U</div>
+    <div class="client-logo">Omroep MAX</div>
+    <div class="client-logo">Eyeworks</div>
+    <div class="client-logo">2wayTraffic</div>
+    <div class="client-logo">Chello Media</div>
+    <div class="client-logo">CineVideogroep</div>
+  </div>
+</section>
 
 <footer>
   &copy; 2026 Bert Satter &mdash; <a href="tel:0640659999" style="color:#f0a500; text-decoration:none;">064 065 9999</a> &mdash; <a href="mailto:bert@satter.tv" style="color:#888; text-decoration:none;">bert@satter.tv</a>
@@ -945,6 +1143,12 @@
     document.querySelectorAll('.tab-btn').forEach(el => el.classList.remove('active'));
     document.getElementById('tab-' + lang).classList.add('active');
     btn.classList.add('active');
+    // Vertaal beschikbaarheids-tekst en clients-titel
+    document.querySelectorAll('[data-' + lang + ']').forEach(el => {
+      el.textContent = el.dataset[lang];
+    });
+    // Activeer reveal voor nieuw zichtbare entries
+    observeReveals();
   }
 
   // ── Donkere modus ──
@@ -960,6 +1164,37 @@
       document.body.classList.add('dark');
     }
   })();
+
+  // ── Fade-in bij scrollen ──
+  let revealObserver;
+  function observeReveals() {
+    const selectors = '.tab-content.active .entry, .tab-content.active .brief-cv h3, .tab-content.active .brief-cv ul, .tab-content.active .brief-cv .summary, .tab-content.active .languages-block';
+    if (!('IntersectionObserver' in window)) {
+      document.querySelectorAll(selectors).forEach(el => el.classList.add('reveal','visible'));
+      return;
+    }
+    if (!revealObserver) {
+      revealObserver = new IntersectionObserver((entries) => {
+        entries.forEach(e => {
+          if (e.isIntersecting) {
+            e.target.classList.add('visible');
+            revealObserver.unobserve(e.target);
+          }
+        });
+      }, { rootMargin: '0px 0px -40px 0px', threshold: 0.05 });
+    }
+    document.querySelectorAll(selectors).forEach(el => {
+      if (!el.classList.contains('reveal')) {
+        el.classList.add('reveal');
+        revealObserver.observe(el);
+      }
+    });
+  }
+  if (document.readyState === 'loading') {
+    document.addEventListener('DOMContentLoaded', observeReveals);
+  } else {
+    observeReveals();
+  }
 </script>
 </body>
 </html>
